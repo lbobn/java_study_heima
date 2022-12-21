@@ -10,6 +10,7 @@
       <module fileurl="file://$PROJECT_DIR$/day06-code/day06-code.iml" filepath="$PROJECT_DIR$/day06-code/day06-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/oop-code/oop-code.iml" filepath="$PROJECT_DIR$/oop-code/oop-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/oop-test/oop-test.iml" filepath="$PROJECT_DIR$/oop-test/oop-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/string-code/string-code.iml" filepath="$PROJECT_DIR$/string-code/string-code.iml" />
     </modules>
   </component>
 </project>

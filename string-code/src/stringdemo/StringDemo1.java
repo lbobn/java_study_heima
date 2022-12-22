@@ -1,6 +1,6 @@
 package stringdemo;
 
-public class stringDemo1 {
+public class StringDemo1 {
     public static void main(String[] args) {
         /*获取字符串对象*/
 

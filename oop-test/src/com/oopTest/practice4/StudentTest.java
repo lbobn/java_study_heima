@@ -69,7 +69,7 @@ public class StudentTest {
     }
 
     //定义方法通过id删除信息
-    public static Student[] delete(Student[] arr, int id) {
+    public static void delete(Student[] arr, int id) {
         int result = findId(arr, id);
         if (result >= 0) {
             arr[result] = null;
@@ -85,7 +85,6 @@ public class StudentTest {
             //返回-1，则未找到id
             System.out.println("学号(id)不存在，删除失败！");
         }
-        return arr;
     }
 
     //定义方法遍历数组

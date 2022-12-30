@@ -30,10 +30,12 @@ public class StringTest13 {
 
         String[] RomeStr = toRomeNum(str);
         for (int i = 0; i < RomeStr.length; i++) {
-            if (i == RomeStr.length - 1) {
-                System.out.println(RomeStr[i]);
-            } else {
-                System.out.print(RomeStr[i] + ", ");
+            if (RomeStr[i] != null) {
+                if (i == RomeStr.length - 1 || RomeStr[i + 1] == null) {
+                    System.out.print(RomeStr[i]);
+                } else {
+                    System.out.print(RomeStr[i] + ", ");
+                }
             }
 
         }

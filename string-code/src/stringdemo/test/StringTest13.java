@@ -13,7 +13,22 @@ public class StringTest13 {
         注意点:
         罗马数字里面是没有0的
         如果键盘录入的数字包含0，可以变成""(长度为0的字符串)
+        //char c=switch(x){
 */
+/*
+        int x=0;
+         String s=switch(x){
+            case 1->"I";
+            case 2->"II";
+            case 3->"III";
+            case 4->"IV";
+            case 5->"V";
+            case 6->"VI";
+            case 7->"VII";
+            case 8->"VIII";
+            case 9->"IX";
+
+        };*/
         String str;
         while (true) {
             //键盘录入字符串

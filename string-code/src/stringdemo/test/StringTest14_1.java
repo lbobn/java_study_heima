@@ -10,5 +10,37 @@ public class StringTest14_1 {
         */
         String strA = "abcde";
         String strB = "cdeab";
+
+        //旋转字符串
+       /* String rotate=rotate(strA);
+        System.out.println(rotate);*/
+        //判断
+        boolean result = check(strA, strB);
+        if (result) {
+            System.out.println("匹配成功");
+        } else {
+            System.out.println("匹配失败");
+        }
+
+
+    }
+
+    public static boolean check(String strA, String strB) {
+        for (int i = 0; i < strA.length(); i++) {
+            strA = rotate(strA);
+            if (strA.equals(strB)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //把左边的字符移动到右侧
+    public static String rotate(String str) {
+        //1.subString截取
+        //2.变成字符数组再操作
+        char first = str.charAt(0);
+        String end = str.substring(1);
+        return end + first;
     }
 }

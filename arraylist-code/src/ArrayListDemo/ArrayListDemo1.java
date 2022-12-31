@@ -4,7 +4,9 @@ import java.util.ArrayList;
 
 public class ArrayListDemo1 {
     public static void main(String[] args) {
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
+
+        //ArrayList<String> list = new ArrayList<String>();
 
         /*增*/
         list.add("aaa");

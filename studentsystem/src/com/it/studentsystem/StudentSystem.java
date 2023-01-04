@@ -22,8 +22,8 @@ public class StudentSystem {
             String choose = sc.next();
             switch (choose) {
                 case "1" -> addStudent(list);
-                case "2" -> deleteStudent();
-                case "3" -> updateStudent();
+                case "2" -> deleteStudent(list);
+                case "3" -> updateStudent(list);
                 case "4" -> queryStudent(list);
                 case "5" -> {
                     System.out.println("退出");
@@ -77,13 +77,48 @@ public class StudentSystem {
     }
 
     //删除学生
-    public static void deleteStudent() {
-        System.out.println("删除学生");
+    public static void deleteStudent(ArrayList<Student> list) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("请输入要删除的学生id");
+        String id = sc.next();
+        int index = getIndex(list, id);
+        if (index < 0) {
+            System.out.println("id不存在，删除失败");
+        } else {
+            list.remove(index);
+            System.out.println("id为" + id + "的学生已删除");
+        }
+
+
     }
 
     //修改学生
-    public static void updateStudent() {
-        System.out.println("修改学生");
+    public static void updateStudent(ArrayList<Student> list) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入要修改学生的id");
+        String id = sc.next();
+
+        int index = getIndex(list, id);
+        if (index < 0) {
+            System.out.println("要修改的学生id" + id + "不存在");
+            return;
+        }
+
+        Student stu = list.get(index);
+        System.out.println("请输入学生的姓名");
+        String newName = sc.next();
+        stu.setName(newName);
+
+        System.out.println("请输入学生的年龄");
+        int newAge = sc.nextInt();
+        stu.setAge(newAge);
+
+        System.out.println("请输入学生地址");
+        String newAddress = sc.next();
+        stu.setAddress(newAddress);
+
+        System.out.println("学生信息修改完成");
     }
 
     //查询学生
@@ -105,7 +140,7 @@ public class StudentSystem {
     //判断id是否存在
     public static boolean contains(ArrayList<Student> list, String id) {
 
-        for (int i = 0; i < list.size(); i++) {
+        /*for (int i = 0; i < list.size(); i++) {
             Student stu = list.get(i);
             String sid = stu.getId();
             if (sid.equals(id)) {
@@ -113,7 +148,21 @@ public class StudentSystem {
             }
         }
 
-        return false;//遍历结束后还没相同id，则返回false
+        return false;//遍历结束后还没相同id，则返回false*/
+        return getIndex(list, id) >= 0;//直接掉用getIndex()函数判断
 
+    }
+
+    //获得id对应索引
+    public static int getIndex(ArrayList<Student> list, String id) {
+        for (int i = 0; i < list.size(); i++) {
+            Student stu = list.get(i);
+            String sid = stu.getId();
+            if (sid.equals(id)) {
+                return i;//遍历中若有id相同，则返回索引i
+            }
+        }
+
+        return -1;//遍历结束后还没相同id，则返回-1
     }
 }

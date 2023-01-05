@@ -1,5 +1,7 @@
 package com.it.studentsystemPlus;
 
+import com.it.studentsystem.StudentSystem;
+
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -306,6 +308,8 @@ public class App {
             boolean result = checkUserInfo(list, userInfo);
             if (result) {
                 System.out.println("登录成功！");
+                StudentSystem ss = new StudentSystem();
+                ss.startStudentSystem();
                 break;
             } else {
                 System.out.println("登录失败，用户名或密码错误！");

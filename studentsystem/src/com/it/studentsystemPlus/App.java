@@ -32,7 +32,57 @@ public class App {
 
     //忘记密码
     private static void forgetPassword(ArrayList<User> list) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入用户名");
+        String username = sc.next();
+        boolean flag = contains(list, username);
+        if (!flag) {
+            System.out.println("当前用户" + username + "未注册，请先注册");
+            return;
+        }
 
+        //录入身份证和手机号
+        System.out.println("请输入身份证号");
+        String ID = sc.next();
+        System.out.println("请输入电话号码");
+        String phoneNumber = sc.next();
+
+        //比较以上数据与用户对象中的是否一致
+        //获取相同用户名对象索引
+        int index = findIndex(list, username);
+        User user = list.get(index);
+        if (!(user.getPersonID().equalsIgnoreCase(ID) && user.getPhoneNumber().equals(phoneNumber))) {
+            System.out.println("身份证号或手机号有误，不能修改密码");
+            return;
+        }
+        //当代码执行到这,以上所有数据正确，开始键盘输入密码并修改
+        String password;
+        while (true) {
+            System.out.println("请输入新密码");
+            password = sc.next();
+            System.out.println("请再输一次");
+            String againPassword = sc.next();
+
+            if (!password.equals(againPassword)) {
+                System.out.println("两次输入不一致，请重新输入");
+            } else {
+                break;
+            }
+        }
+        //修改密码
+        user.setPassword(password);
+        System.out.println("密码修改成功");
+    }
+
+    //查找username对应集合中的索引
+    private static int findIndex(ArrayList<User> list, String username) {
+        for (int i = 0; i < list.size(); i++) {
+            User user = list.get(i);
+            if (user.getUsername().equals(username)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     //注册

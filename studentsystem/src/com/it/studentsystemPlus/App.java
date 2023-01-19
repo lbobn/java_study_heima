@@ -7,6 +7,11 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class App {
+
+    public static final String LOGIN = "1";
+    public static final String REGISTER = "2";
+    public static final String FORGET_PASSWORD = "3";
+
     public static void main(String[] args) {
 
         ArrayList<User> list = new ArrayList<>();
@@ -18,9 +23,9 @@ public class App {
             String choose = sc.next();
 
             switch (choose) {
-                case "1" -> login(list);
-                case "2" -> register(list);
-                case "3" -> forgetPassword(list);
+                case LOGIN -> login(list);
+                case REGISTER -> register(list);
+                case FORGET_PASSWORD -> forgetPassword(list);
                 case "4" -> {
                     System.out.println("谢谢使用，再见");
                     System.exit(0);

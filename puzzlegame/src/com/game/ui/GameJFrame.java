@@ -30,6 +30,12 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
     int step = 0;
 
     //创建选项下的条目对象
+    JMenu replaceItem = new JMenu("更换图片");
+
+    JMenuItem girlItem = new JMenuItem("美女");
+    JMenuItem animalItem = new JMenuItem("动物");
+    JMenuItem sportItem = new JMenuItem("运动");
+
     JMenuItem replayItem = new JMenuItem("重新游戏");
     JMenuItem reLoginItem = new JMenuItem("重新登录");
     JMenuItem closeItem = new JMenuItem("关闭游戏");
@@ -144,6 +150,10 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
 
 
         //将选项条目添加到选项中
+        functionJMenu.add(replaceItem);
+        replaceItem.add(girlItem);
+        replaceItem.add(animalItem);
+        replaceItem.add(sportItem);
         functionJMenu.add(replayItem);
         functionJMenu.add(reLoginItem);
         functionJMenu.add(closeItem);
@@ -151,6 +161,10 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         aboutJMenu.add(accountItem);
 
         //给条目绑定事件
+        girlItem.addActionListener(this);
+        animalItem.addActionListener(this);
+        sportItem.addActionListener(this);
+
         replayItem.addActionListener(this);
         reLoginItem.addActionListener(this);
         closeItem.addActionListener(this);
@@ -311,7 +325,7 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
         //获取当前被点击的条目对象
         Object obj = e.getSource();
         if (obj == replayItem) {
-            System.out.println("冲完");
+            System.out.println("重新游戏");
 
             //打乱数据
             initData();
@@ -322,10 +336,56 @@ public class GameJFrame extends JFrame implements KeyListener, ActionListener {
 
         } else if (obj == reLoginItem) {
             System.out.println("重新登录");
+            this.setVisible(false);
+            new LoginJFrame();
         } else if (obj == closeItem) {
-            System.out.println("关闭");
+            System.out.println("退出游戏");
+            System.exit(0);
         } else if (obj == accountItem) {
-            System.out.println("练习");
+            System.out.println("联系方式");
+            //创建弹框对象
+            JDialog jDialog = new JDialog();
+            //创建图片管理容器的对象
+            JLabel jLabel = new JLabel(new ImageIcon("puzzlegame\\image\\about1.jpg"));
+            jLabel.setBounds(0, 0, 258, 258);
+            jDialog.getContentPane().add(jLabel);
+            //给弹框设置大小
+            jDialog.setSize(344, 344);
+
+            jDialog.setAlwaysOnTop(true);
+            jDialog.setLocationRelativeTo(null);
+            jDialog.setModal(true);//设置不关闭次弹窗无法其他操作
+            jDialog.setVisible(true);
+        } else if (obj == girlItem) {
+            Random r = new Random();
+            int num = r.nextInt(13) + 1;
+            path = "puzzlegame\\image\\girl\\girl" + num + "\\";
+            //打乱数据
+            initData();
+            //计步器清零
+            step = 0;
+            //重新加载图片
+            initImage();
+        } else if (obj == animalItem) {
+            Random r = new Random();
+            int num = r.nextInt(8) + 1;
+            path = "puzzlegame\\image\\animal\\animal" + num + "\\";
+            //打乱数据
+            initData();
+            //计步器清零
+            step = 0;
+            //重新加载图片
+            initImage();
+        } else if (obj == sportItem) {
+            Random r = new Random();
+            int num = r.nextInt(10) + 1;
+            path = "puzzlegame\\image\\sport\\sport" + num + "\\";
+            //打乱数据
+            initData();
+            //计步器清零
+            step = 0;
+            //重新加载图片
+            initImage();
         }
     }
 }

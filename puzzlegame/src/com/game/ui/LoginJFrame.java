@@ -10,6 +10,9 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Scanner;
+
+import static com.game.util.CodeUtil.getCode;
 
 public class LoginJFrame extends JFrame implements MouseListener {
     //登录界面
@@ -21,14 +24,18 @@ public class LoginJFrame extends JFrame implements MouseListener {
         list.add(new User("lisi", "67890"));
     }
 
+    static JTextField usernameInput = new JTextField();
+    static JPasswordField passwordInput = new JPasswordField();
+    static JTextField captchaInput = new JTextField();
+
     private final static String PRESS_LOGIN = "puzzlegame\\image\\login\\登录按下.png";
     private final static String LOGIN = "puzzlegame\\image\\login\\登录按钮.png";
     private final static String PRESS_REGISTER = "puzzlegame\\image\\login\\注册按下.png";
     private final static String REGISTER = "puzzlegame\\image\\login\\注册按钮.png";
 
-    JLabel rightCode = new JLabel();
-    JButton loginButton = null;
-    JButton registerButton = null;
+    static JLabel rightCode = new JLabel();
+    static JButton loginButton = null;
+    static JButton registerButton = null;
 
     public LoginJFrame() {
         //初始化界面
@@ -47,7 +54,7 @@ public class LoginJFrame extends JFrame implements MouseListener {
         usernameTitle.setBounds(116, 135, 47, 17);
         this.getContentPane().add(usernameTitle);
         //输入框
-        JTextField usernameInput = new JTextField();
+
         usernameInput.setBounds(195, 134, 200, 30);
         this.getContentPane().add(usernameInput);
 
@@ -57,7 +64,7 @@ public class LoginJFrame extends JFrame implements MouseListener {
         passwordTitle.setBounds(130, 195, 32, 16);
         this.getContentPane().add(passwordTitle);
         //输入框
-        JPasswordField passwordInput = new JPasswordField();
+
         passwordInput.setBounds(195, 194, 200, 30);
         this.getContentPane().add(passwordInput);
 
@@ -66,11 +73,11 @@ public class LoginJFrame extends JFrame implements MouseListener {
         captchaTitle.setBounds(116, 256, 50, 30);
         this.getContentPane().add(captchaTitle);
         //输入框
-        JTextField captchaInput = new JTextField();
+
         captchaInput.setBounds(195, 256, 100, 30);
         this.getContentPane().add(captchaInput);
         //验证码显示
-        String codeStr = CodeUtil.getCode();
+        String codeStr = getCode();
 
         rightCode.setText(codeStr);
         rightCode.setBounds(300, 256, 50, 30);
@@ -131,7 +138,7 @@ public class LoginJFrame extends JFrame implements MouseListener {
     }
 
     //弹框
-    public void showJDialog(String content) {
+    public static void showJDialog(String content) {
         //创建弹框对象
         JDialog jDialog = new JDialog();
         jDialog.setSize(200, 150);
@@ -143,27 +150,97 @@ public class LoginJFrame extends JFrame implements MouseListener {
         JLabel jLabel = new JLabel(content);
         jLabel.setBounds(0, 0, 200, 150);
         jDialog.getContentPane().add(jLabel);
+        jDialog.setVisible(true);
     }
 
+    //鼠标按下并释放
     @Override
     public void mouseClicked(MouseEvent e) {
         Object button = e.getSource();
         if (button == loginButton) {
             System.out.println("登录松开");
             loginButton.setIcon(new ImageIcon(LOGIN));
-
+            login();
+            //System.out.println(usernameInput.getText());
 
         } else if (button == registerButton) {
             System.out.println("注册松开");
             registerButton.setIcon(new ImageIcon(REGISTER));
+            showJDialog("注册功能开发中,敬请期待!");
 
 
         } else if (button == rightCode) {
             System.out.println("切换验证码");
-            String codeStr = CodeUtil.getCode();
+            String codeStr = getCode();
             rightCode.setText(codeStr);
 
         }
+    }
+
+    private static void login() {
+
+        String rcode = rightCode.getText();
+        String code = captchaInput.getText();
+
+
+        if (code.equalsIgnoreCase(rcode)) {
+            //System.out.println("验证码正确");
+
+        } else {
+            System.out.println("验证码错误，请重新输入");
+            showJDialog("验证码错误，请重新输入");
+            return;
+        }
+
+        String username = usernameInput.getText();
+
+        //判断用户名是否存在
+        boolean flag = contains(list, username);
+        if (!flag) {
+            System.out.println("用户名" + username + "不存在，请先注册");
+            showJDialog("用户名" + username + "不存在，请先注册");
+            return;
+        }
+
+        String password = new String(passwordInput.getPassword());
+
+        //验证用户名及密码正确性
+        //传递参数可以传递整体(封装思想利用)
+        User userInfo = new User(username, password);
+        boolean result = checkUserInfo(list, userInfo);
+        if (result) {
+            System.out.println("登录成功！");
+            showJDialog("登录成功！关闭此弹窗以开始游戏");
+            new GameJFrame();
+        } else {
+            System.out.println("登录失败，用户名或密码错误！");
+            showJDialog("登录失败，用户名或密码错误！请重新输入");
+        }
+
+
+    }
+
+    private static boolean contains(ArrayList<User> list, String username) {
+
+        for (int i = 0; i < list.size(); i++) {
+            User user = list.get(i);
+            String username1 = user.getUsername();
+            if (username1.equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean checkUserInfo(ArrayList<User> list, User userInfo) {
+        for (int i = 0; i < list.size(); i++) {
+            User user = list.get(i);
+            if (user.getUsername().equals(userInfo.getUsername()) && user.getPassword().equals(userInfo.getPassword())) {
+                return true;
+            }
+        }
+        //循环结束还未找到相同信息，则返回false
+        return false;
     }
 
     //鼠标按住不松

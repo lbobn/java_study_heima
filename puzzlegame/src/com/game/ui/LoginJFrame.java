@@ -210,7 +210,7 @@ public class LoginJFrame extends JFrame implements MouseListener {
         boolean result = checkUserInfo(list, userInfo);
         if (result) {
             System.out.println("登录成功！");
-            showJDialog("登录成功！关闭此弹窗以开始游戏");
+            showJDialog("登录成功！关闭弹窗开始游戏");
             new GameJFrame();
         } else {
             System.out.println("登录失败，用户名或密码错误！");

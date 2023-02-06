@@ -1,4 +1,4 @@
-package com.a08regex.demo;
+package com.a08regexdemo;
 
 public class RegexDemo8 {
 

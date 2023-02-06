@@ -1,4 +1,4 @@
-package com.a02system.demo;
+package com.a02systemdemo;
 
 public class SystemDemo {
     public static void main(String[] args) {

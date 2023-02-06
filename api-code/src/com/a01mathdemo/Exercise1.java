@@ -1,4 +1,4 @@
-package com.a01math.demo;
+package com.a01mathdemo;
 
 public class Exercise1 {
     public static void main(String[] args) {

@@ -177,7 +177,7 @@ public class LoginJFrame extends JFrame implements MouseListener {
         }
     }
 
-    private static void login() {
+    private void login() {
 
         String rcode = rightCode.getText();
         String code = captchaInput.getText();
@@ -211,6 +211,7 @@ public class LoginJFrame extends JFrame implements MouseListener {
         if (result) {
             System.out.println("登录成功！");
             showJDialog("登录成功！关闭弹窗开始游戏");
+            this.setVisible(false);
             new GameJFrame();
         } else {
             System.out.println("登录失败，用户名或密码错误！");

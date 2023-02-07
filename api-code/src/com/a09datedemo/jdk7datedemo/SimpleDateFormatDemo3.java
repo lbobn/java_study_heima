@@ -33,13 +33,13 @@ public class SimpleDateFormatDemo3 {
         long xiaomingDateTime = xiaomingDate.getTime();
         long xiaohuaDateTime = xiaohuaDate.getTime();
 
-        if (xiaomingDateTime > startDateTime && xiaomingDateTime < endDateTime) {
+        if (xiaomingDateTime >= startDateTime && xiaomingDateTime <= endDateTime) {
             System.out.println("小明成功参与秒杀");
         } else {
             System.out.println("小明没有成功参与秒杀");
         }
 
-        if (xiaohuaDateTime > startDateTime && xiaohuaDateTime < endDateTime) {
+        if (xiaohuaDateTime >= startDateTime && xiaohuaDateTime <= endDateTime) {
             System.out.println("小花成功参与秒杀");
         } else {
             System.out.println("小花没有成功参与秒杀");

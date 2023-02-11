@@ -19,6 +19,9 @@ public class A05_QuickDemo {
         int start = i;
         int end = j;
 
+        if (start > end) {
+            return;
+        }
         //记录基准数
         int baseNumber = arr[i];
 
@@ -49,5 +52,10 @@ public class A05_QuickDemo {
         int temp = arr[i];
         arr[i] = arr[start];
         arr[start] = temp;
+
+        //基准数左边
+        quickSort(arr, i, start - 1);
+        //基准数右边
+        quickSort(arr, start + 1, j);
     }
 }

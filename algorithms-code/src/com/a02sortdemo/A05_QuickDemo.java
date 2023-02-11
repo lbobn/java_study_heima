@@ -1,6 +1,7 @@
 package com.a02sortdemo;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class A05_QuickDemo {
     public static void main(String[] args) {
@@ -8,10 +9,21 @@ public class A05_QuickDemo {
          * 以0索引数作为基准数，确定基准数在数组中的位置
          * 比基准数小的在左边，比基准数大的在右边*/
 
-        int[] arr = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
-        quickSort(arr, 0, arr.length - 1);
+        //1.
+        int[] arr1 = {6, 1, 2, 7, 9, 3, 4, 5, 10, 8};
+        quickSort(arr1, 0, arr1.length - 1);
+        System.out.println(Arrays.toString(arr1));
 
-        System.out.println(Arrays.toString(arr));
+        //2.
+        int[] arr2 = new int[1000000];
+        Random r = new Random();
+        for (int i = 0; i < arr2.length; i++) {
+            arr2[i] = r.nextInt();
+        }
+        long start = System.currentTimeMillis();
+        quickSort(arr2, 0, arr2.length - 1);
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
     }
 
     public static void quickSort(int[] arr, int i, int j) {

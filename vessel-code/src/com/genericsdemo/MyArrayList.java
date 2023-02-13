@@ -3,7 +3,7 @@ package com.genericsdemo;
 import java.util.Arrays;
 
 /*
- * 编写类时,不确定类型,则可定义为泛型类*/
+ * 编写类时,不确定类型,则可定义为"泛型类"*/
 public class MyArrayList<E> {
     Object[] obj = new Object[10];
     int size;

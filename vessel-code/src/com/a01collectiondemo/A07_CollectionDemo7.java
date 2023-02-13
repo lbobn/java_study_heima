@@ -1,8 +1,7 @@
-package com.collectiondemo;
+package com.a01collectiondemo;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.function.Consumer;
 
 public class A07_CollectionDemo7 {
     public static void main(String[] args) {

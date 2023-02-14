@@ -1,7 +1,8 @@
-package com.genericsdemo;
+package com.a03genericsdemo;
 
 public class GenericsDemo2 {
     public static void main(String[] args) {
+        //泛型类
         MyArrayList<String> list = new MyArrayList<>();
 
         list.add("aaa");

@@ -1,10 +1,12 @@
-package com.genericsdemo;
+package com.a03genericsdemo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public class GenericsDemo1 {
     public static void main(String[] args) {
+        //泛型  jdk5提出
+
         //没有泛型时
         //可以添加任意类型数据,
         // 但都被当作Object类,此时便不能调用子类的特有功能

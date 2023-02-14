@@ -1,4 +1,4 @@
-package com.genericsdemo;
+package com.a03genericsdemo;
 
 import java.util.Arrays;
 

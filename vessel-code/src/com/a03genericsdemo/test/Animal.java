@@ -1,13 +1,13 @@
-package com.genericsdemo;
+package com.a03genericsdemo.test;
 
-public class Student {
+public abstract class Animal {
     private String name;
     private int age;
 
-    public Student() {
+    public Animal() {
     }
 
-    public Student(String name, int age) {
+    public Animal(String name, int age) {
         this.name = name;
         this.age = age;
     }
@@ -49,6 +49,10 @@ public class Student {
     }
 
     public String toString() {
-        return "Student{name = " + name + ", age = " + age + "}";
+        return "Animal{name = " + name + ", age = " + age + "}";
     }
+
+    public abstract void eat();
+
+
 }

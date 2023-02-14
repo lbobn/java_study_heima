@@ -1,11 +1,11 @@
-package com.genericsdemo;
+package com.a03genericsdemo;
 
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class MyArrayList2 implements List<String> {
+public class MyArrayList3<E> implements List<E> {
     @Override
     public int size() {
         return 0;
@@ -22,7 +22,7 @@ public class MyArrayList2 implements List<String> {
     }
 
     @Override
-    public Iterator<String> iterator() {
+    public Iterator<E> iterator() {
         return null;
     }
 
@@ -37,7 +37,7 @@ public class MyArrayList2 implements List<String> {
     }
 
     @Override
-    public boolean add(String s) {
+    public boolean add(E e) {
         return false;
     }
 
@@ -52,12 +52,12 @@ public class MyArrayList2 implements List<String> {
     }
 
     @Override
-    public boolean addAll(Collection<? extends String> c) {
+    public boolean addAll(Collection<? extends E> c) {
         return false;
     }
 
     @Override
-    public boolean addAll(int index, Collection<? extends String> c) {
+    public boolean addAll(int index, Collection<? extends E> c) {
         return false;
     }
 
@@ -77,22 +77,22 @@ public class MyArrayList2 implements List<String> {
     }
 
     @Override
-    public String get(int index) {
+    public E get(int index) {
         return null;
     }
 
     @Override
-    public String set(int index, String element) {
+    public E set(int index, E element) {
         return null;
     }
 
     @Override
-    public void add(int index, String element) {
+    public void add(int index, E element) {
 
     }
 
     @Override
-    public String remove(int index) {
+    public E remove(int index) {
         return null;
     }
 
@@ -107,17 +107,17 @@ public class MyArrayList2 implements List<String> {
     }
 
     @Override
-    public ListIterator<String> listIterator() {
+    public ListIterator<E> listIterator() {
         return null;
     }
 
     @Override
-    public ListIterator<String> listIterator(int index) {
+    public ListIterator<E> listIterator(int index) {
         return null;
     }
 
     @Override
-    public List<String> subList(int fromIndex, int toIndex) {
+    public List<E> subList(int fromIndex, int toIndex) {
         return null;
     }
 }

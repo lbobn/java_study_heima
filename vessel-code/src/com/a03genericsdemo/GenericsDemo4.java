@@ -1,4 +1,4 @@
-package com.genericsdemo;
+package com.a03genericsdemo;
 
 public class GenericsDemo4 {
     public static void main(String[] args) {

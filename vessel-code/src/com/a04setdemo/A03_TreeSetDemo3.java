@@ -7,6 +7,7 @@ public class A03_TreeSetDemo3 {
     public static void main(String[] args) {
         //排序方式二
         //比较器排序,使用含Comparator接口的构造创建对象
+        //若方式一二均存在，以方式二为准
 
         /*TreeSet<String> ts=new TreeSet<>(new Comparator<String>() {
             @Override

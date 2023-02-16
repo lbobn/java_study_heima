@@ -19,6 +19,7 @@
       <module fileurl="file://$PROJECT_DIR$/studentsystem/studentsystem.iml" filepath="$PROJECT_DIR$/studentsystem/studentsystem.iml" />
       <module fileurl="file://$PROJECT_DIR$/vessel-code/vessel-code.iml" filepath="$PROJECT_DIR$/vessel-code/vessel-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/z01-map-code/z01-map-code.iml" filepath="$PROJECT_DIR$/z01-map-code/z01-map-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/z02-farmerandload/z02-farmerandload.iml" filepath="$PROJECT_DIR$/z02-farmerandload/z02-farmerandload.iml" />
     </modules>
   </component>
 </project>

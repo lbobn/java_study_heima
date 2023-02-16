@@ -1,17 +1,15 @@
-package com.doudizhu.game;
+package com.itheima.game;
 
-import com.doudizhu.domain.Poker;
+import com.itheima.domain.Poker;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Collections;
 
 public class GameJFrame extends JFrame implements ActionListener {
-
 
     //获取界面中的隐藏容器
     //现在统一获取了，后面直接用就可以了
@@ -58,6 +56,8 @@ public class GameJFrame extends JFrame implements ActionListener {
     //2索引：右边的电脑玩家
     JTextField time[] = new JTextField[3];
 
+    //用户操作，涉及多线程的知识
+    PlayerOperation po;
 
     boolean nextPlayer = false;
 
@@ -93,7 +93,7 @@ public class GameJFrame extends JFrame implements ActionListener {
                 if ((i == 5) && (j > 2)) {
                     break;
                 } else {
-                    Poker poker = new Poker(i + "-" + j, false);
+                    Poker poker = new Poker(this, i + "-" + j, false);
                     poker.setLocation(350, 150);
 
                     pokerList.add(poker);
@@ -175,80 +175,81 @@ public class GameJFrame extends JFrame implements ActionListener {
 
         //展示自己前面的倒计时文本
         time[1].setVisible(true);
-
+        //倒计时10秒
+        po = new PlayerOperation(this, 30);
+        //开启倒计时
+        po.start();
 
     }
 
-/*
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == landlord[0]) {
-                //点击抢地主
-                time[1].setText("抢地主");
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == landlord[0]) {
+            //点击抢地主
+            time[1].setText("抢地主");
+            po.isRun = false;
+        } else if (e.getSource() == landlord[1]) {
+            //点击不抢
+            time[1].setText("不抢");
+            po.isRun = false;
+        } else if (e.getSource() == publishCard[1]) {
+            //点击不要
+            this.nextPlayer = true;
+            currentList.get(1).clear();
+            time[1].setText("不要");
+        } else if (e.getSource() == publishCard[0]) {
+            //点击出牌
 
-            } else if (e.getSource() == landlord[1]) {
-                //点击不抢
-                time[1].setText("不抢");
+            //创建一个临时的集合，用来存放当前要出的牌
+            ArrayList<Poker> c = new ArrayList<>();
+            //获取中自己手上所有的牌
+            ArrayList<Poker> player2 = playerList.get(1);
 
-            } else if (e.getSource() == publishCard[1]) {
-                //点击不要
-                this.nextPlayer = true;
-                currentList.get(1).clear();
-                time[1].setText("不要");
-            } else if (e.getSource() == publishCard[0]) {
-                //点击出牌
-
-                //创建一个临时的集合，用来存放当前要出的牌
-                ArrayList<Poker> c = new ArrayList<>();
-                //获取中自己手上所有的牌
-                ArrayList<Poker> player2 = playerList.get(1);
-
-                //遍历手上的牌，把要出的牌都放到临时集合中
-                for (int i = 0; i < player2.size(); i++) {
-                    Poker poker = player2.get(i);
-                    if (poker.isClicked()) {
-                        c.add(poker);
-                    }
+            //遍历手上的牌，把要出的牌都放到临时集合中
+            for (int i = 0; i < player2.size(); i++) {
+                Poker poker = player2.get(i);
+                if (poker.isClicked()) {
+                    c.add(poker);
                 }
-
-                int flag = 0;
-                //判断，如果左右两个电脑玩家是否都不要
-                if (time[0].getText().equals("不要") && time[2].getText().equals("不要")) {
-                    if (Common.jugdeType(c) != PokerType.c0){
-                        flag = 1;
-                    }
-                } else {
-                    flag = Common.checkCards(c, currentList, this);
-                }
-
-                if (flag == 1) {
-                    //把当前要出的牌，放到大集合中统一管理
-                    currentList.set(1, c);
-                    //在手上的牌中，去掉已经出掉的牌
-                    player2.removeAll(c);
-
-                    //计算坐标并移动牌
-                    //移动的目的是要出的牌移动到上方
-                    Point point = new Point();
-                    point.x = (770 / 2) - (c.size() + 1) * 15 / 2;
-                    point.y = 300;
-                    for (int i = 0, len = c.size(); i < len; i++) {
-                        Poker poker = c.get(i);
-                        Common.move(poker, poker.getLocation(), point);
-                        point.x += 15;
-                    }
-
-                    //重新摆放剩余的牌
-                    Common.rePosition(this, player2, 1);
-                    //赢藏文本提示
-                    time[1].setVisible(false);
-                    //下一个玩家可玩
-                    this.nextPlayer = true;
-                }
-
             }
+
+            int flag = 0;
+            //判断，如果左右两个电脑玩家是否都不要
+            if (time[0].getText().equals("不要") && time[2].getText().equals("不要")) {
+                if (Common.jugdeType(c) != PokerType.c0) {
+                    flag = 1;
+                }
+            } else {
+                flag = Common.checkCards(c, currentList, this);
+            }
+
+            if (flag == 1) {
+                //把当前要出的牌，放到大集合中统一管理
+                currentList.set(1, c);
+                //在手上的牌中，去掉已经出掉的牌
+                player2.removeAll(c);
+
+                //计算坐标并移动牌
+                //移动的目的是要出的牌移动到上方
+                Point point = new Point();
+                point.x = (770 / 2) - (c.size() + 1) * 15 / 2;
+                point.y = 300;
+                for (int i = 0, len = c.size(); i < len; i++) {
+                    Poker poker = c.get(i);
+                    Common.move(poker, poker.getLocation(), point);
+                    point.x += 15;
+                }
+
+                //重新摆放剩余的牌
+                Common.rePosition(this, player2, 1);
+                //赢藏文本提示
+                time[1].setVisible(false);
+                //下一个玩家可玩
+                this.nextPlayer = true;
+            }
+
         }
-*/
+    }
 
     //添加组件
     public void initView() {
@@ -340,9 +341,4 @@ public class GameJFrame extends JFrame implements ActionListener {
         container.setBackground(Color.LIGHT_GRAY);
     }
 
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-    }
 }

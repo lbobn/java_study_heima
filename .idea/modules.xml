@@ -23,6 +23,7 @@
       <module fileurl="file://$PROJECT_DIR$/z02-farmerandload/z02-farmerandload.iml" filepath="$PROJECT_DIR$/z02-farmerandload/z02-farmerandload.iml" />
       <module fileurl="file://$PROJECT_DIR$/z03-container-code/z03-container-code.iml" filepath="$PROJECT_DIR$/z03-container-code/z03-container-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/z04-stream-code/z04-stream-code.iml" filepath="$PROJECT_DIR$/z04-stream-code/z04-stream-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/z05-function-code/z05-function-code.iml" filepath="$PROJECT_DIR$/z05-function-code/z05-function-code.iml" />
     </modules>
   </component>
 </project>

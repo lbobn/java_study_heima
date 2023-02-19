@@ -11,7 +11,7 @@ public class Test4 {
            2.再删除自己
         */
 
-        File file = new File("z07-file-code\\aaaaa");
+        File file = new File("z07-file-code\\aaaa");
 
         delete(file);
     }

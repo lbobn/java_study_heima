@@ -6,5 +6,7 @@
         <language minSize="65" name="Java" />
       </Languages>
     </inspection_tool>
+    <inspection_tool class="SerializableHasSerialVersionUIDField" enabled="true" level="WARNING" enabled_by_default="true" />
+    <inspection_tool class="TransientFieldNotInitialized" enabled="true" level="WARNING" enabled_by_default="true" />
   </profile>
 </component>

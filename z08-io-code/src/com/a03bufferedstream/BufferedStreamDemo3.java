@@ -1,4 +1,4 @@
-package com.bufferedstream;
+package com.a03bufferedstream;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

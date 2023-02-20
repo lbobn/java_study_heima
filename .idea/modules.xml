@@ -27,6 +27,7 @@
       <module fileurl="file://$PROJECT_DIR$/z06-exception-code/z06-exception-code.iml" filepath="$PROJECT_DIR$/z06-exception-code/z06-exception-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/z07-file-code/z07-file-code.iml" filepath="$PROJECT_DIR$/z07-file-code/z07-file-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/z08-io-code/z08-io-code.iml" filepath="$PROJECT_DIR$/z08-io-code/z08-io-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/z09-thread-code/z09-thread-code.iml" filepath="$PROJECT_DIR$/z09-thread-code/z09-thread-code.iml" />
     </modules>
   </component>
 </project>

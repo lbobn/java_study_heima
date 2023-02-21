@@ -1,6 +1,10 @@
 package com.a08commonsio;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 public class CommonsIODemo1 {
     public static void main(String[] args) throws IOException {
@@ -35,6 +39,9 @@ public class CommonsIODemo1 {
         FileUtils.cleanDirectory(src);*/
         /*"D:\\Test\\Java\\IdeaProject\\basic-code\\z08-io-code\\a.txt"*/
 
+        String str = FileUtils.readFileToString(new File("D:\\Test\\Java\\IdeaProject\\basic-code\\z08-io-code\\a.txt"),
+                Charset.forName("UTF-8"));
+        System.out.println(str);
 
     }
 }

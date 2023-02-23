@@ -29,6 +29,8 @@
       <module fileurl="file://$PROJECT_DIR$/z08-io-code/z08-io-code.iml" filepath="$PROJECT_DIR$/z08-io-code/z08-io-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/z09-thread-code/z09-thread-code.iml" filepath="$PROJECT_DIR$/z09-thread-code/z09-thread-code.iml" />
       <module fileurl="file://$PROJECT_DIR$/z10-socketnet-code/z10-socketnet-code.iml" filepath="$PROJECT_DIR$/z10-socketnet-code/z10-socketnet-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/z11-reflect-code/z11-reflect-code.iml" filepath="$PROJECT_DIR$/z11-reflect-code/z11-reflect-code.iml" />
+      <module fileurl="file://$PROJECT_DIR$/z12-dynamicproxy-code/z12-dynamicproxy-code.iml" filepath="$PROJECT_DIR$/z12-dynamicproxy-code/z12-dynamicproxy-code.iml" />
     </modules>
   </component>
 </project>

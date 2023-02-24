@@ -12,7 +12,7 @@ public class Server {
 
         //浏览器:127.0.0.1:10086
 
-        //1.创建对象绑定10000端口
+        //1.创建对象绑定10086端口
         ServerSocket ss = new ServerSocket(10086);
 
         //2.等待客户端来连接

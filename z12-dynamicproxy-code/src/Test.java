@@ -14,7 +14,7 @@ public class Test {
 
 
         //1. 获取代理的对象
-        BigStar bigStar = new BigStar("鸡哥");
+        BigStar bigStar = new BigStar("坤哥");
         Star proxy = ProxyUtil.createProxy(bigStar);
 
         //2. 调用唱歌的方法

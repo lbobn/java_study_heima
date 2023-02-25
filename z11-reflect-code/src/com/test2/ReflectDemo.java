@@ -19,7 +19,7 @@ public class ReflectDemo {
         FileInputStream fis = new FileInputStream("z11-reflect-code\\prop.properties");
         prop.load(fis);
         fis.close();
-        System.out.println(prop);
+        /*System.out.println(prop);*/
 
         //2.获取全类名和方法名
         String classname = (String) prop.get("classname");

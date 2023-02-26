@@ -8,7 +8,8 @@ import java.lang.reflect.Method;
 import java.util.Properties;
 
 public class ReflectDemo {
-    public static void main(String[] args) throws IOException, ClassNotFoundException, InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException,
+            InvocationTargetException, InstantiationException, IllegalAccessException, NoSuchMethodException {
         /*
         反射可以跟配置文件结合的方式，动态的创建对象，并调用方法
     */

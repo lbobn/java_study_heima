@@ -24,10 +24,16 @@ public class Test1 {
         String girlNameNet = "http://www.haoming8.cn/baobao/7641.html";
 
         String familyNameStr = webCrawler(familyNameNet);
+        String boyNameStr = webCrawler(boyNameNet);
+        String girlNameStr = webCrawler(girlNameNet);
 
         //System.out.println(familyNameStr);
 
         ArrayList<String> familyNameTempStr = getData(familyNameStr, "(.{4})(。|，)", 1);
+        ArrayList<String> boyNameTempStr = getData(boyNameStr, "([\\u4E00-\\u9FA5]{2})(。|、)", 1);
+        ArrayList<String> girlNameTempStr = getData(girlNameStr, "(.. ){4}..", 0);
+        System.out.println(girlNameTempStr);
+        //ArrayList<String> girlNameTempStr = getData(girlNameStr, "(.{4})(。|，)", 1);
         //System.out.println(familyNameTempStr);
 
     }

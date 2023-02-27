@@ -22,19 +22,40 @@ public class Test1 {
         String familyNameNet = "https://hanyu.baidu.com/s?wd=%E7%99%BE%E5%AE%B6%E5%A7%93&from=poem";
         String boyNameNet = "http://www.haoming8.cn/baobao/10881.html";
         String girlNameNet = "http://www.haoming8.cn/baobao/7641.html";
-
+        //爬取数据
         String familyNameStr = webCrawler(familyNameNet);
         String boyNameStr = webCrawler(boyNameNet);
         String girlNameStr = webCrawler(girlNameNet);
 
-        //System.out.println(familyNameStr);
-
+        //根据正则表达式获取想要的内容
         ArrayList<String> familyNameTempStr = getData(familyNameStr, "(.{4})(。|，)", 1);
         ArrayList<String> boyNameTempStr = getData(boyNameStr, "([\\u4E00-\\u9FA5]{2})(。|、)", 1);
         ArrayList<String> girlNameTempStr = getData(girlNameStr, "(.. ){4}..", 0);
-        System.out.println(girlNameTempStr);
-        //ArrayList<String> girlNameTempStr = getData(girlNameStr, "(.{4})(。|，)", 1);
-        //System.out.println(familyNameTempStr);
+
+        //处理数据
+        //姓处理
+        ArrayList<String> familyName = new ArrayList<>();
+        for (String s : familyNameTempStr) {
+            for (int i = 0; i < s.length(); i++) {
+                familyName.add(s.charAt(i) + "");
+            }
+        }
+        //男生名字处理
+        ArrayList<String> boyName = new ArrayList<>();
+        for (String s : boyNameTempStr) {
+            if (!boyName.contains(s)) {
+                boyName.add(s);
+            }
+        }
+        //女生名字处理
+        ArrayList<String> girlName = new ArrayList<>();
+        for (String s : girlNameTempStr) {
+            String[] arr = s.split(" ");
+            for (String s1 : arr) {
+                girlName.add(s1);
+            }
+        }
+
 
     }
 
@@ -46,7 +67,7 @@ public class Test1 {
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(str);
         while (matcher.find()) {
-            String group = matcher.group(1);
+            String group = matcher.group(index);
             list.add(group);
         }
         return list;

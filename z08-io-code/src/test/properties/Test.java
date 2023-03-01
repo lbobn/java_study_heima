@@ -8,6 +8,7 @@ import java.util.Properties;
 
 public class Test {
     public static void main(String[] args) throws IOException {
+        //配置文件
         Properties prop = new Properties();
 
         prop.put("aaa", "123");

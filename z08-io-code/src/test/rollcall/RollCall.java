@@ -24,7 +24,6 @@ public class RollCall {
         while ((s = br.readLine()) != null) {
             list.add(s);
         }
-
         br.close();
 
         Collections.shuffle(list);

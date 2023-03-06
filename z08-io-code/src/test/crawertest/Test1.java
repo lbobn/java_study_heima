@@ -61,7 +61,7 @@ public class Test1 {
             }
         }
         //获取数据
-        ArrayList<String> info = getInfo(familyName, boyName, girlName, 20, 15);
+        ArrayList<String> info = getInfo(familyName, boyName, girlName, 40, 20);
         Collections.shuffle(info);
         System.out.println(info);
 

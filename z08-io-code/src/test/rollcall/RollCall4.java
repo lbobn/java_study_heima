@@ -11,7 +11,12 @@ public class RollCall4 {
     public static void main(String[] args) throws IOException {
         /*
          *
+         *随机点名器
+         * 从name.txt文件中读取数据并随机点名
+         * 文件内格式为  张三-男-23      (每行仅有一个数据)
+         * 输出其姓名
          *
+         * 增加循环点名:点完所有学生后自动开启第二轮点名
          *
          * */
         BufferedReader br = new BufferedReader(new FileReader("z08-io-code\\src\\test\\crawertest\\names.txt"));

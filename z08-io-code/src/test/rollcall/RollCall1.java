@@ -1,14 +1,12 @@
 package test.rollcall;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
-public class RollCall {
+public class RollCall1 {
     public static void main(String[] args) throws IOException {
 
         /*

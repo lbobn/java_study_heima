@@ -21,6 +21,7 @@ public class RollCall4 {
          * */
         BufferedReader br = new BufferedReader(new FileReader("z08-io-code\\src\\test\\crawertest\\names.txt"));
         ArrayList<String> list = new ArrayList<>();
+        ArrayList<String> list1 = new ArrayList<>();
         String s;
 
         while ((s = br.readLine()) != null) {
@@ -33,7 +34,20 @@ public class RollCall4 {
             Collections.shuffle(list);
 
             String result = list.remove(0);
+            list1.add(result);
             System.out.println(result);
+        }
+
+        System.out.println("-------------第二轮点名------------");
+        while (true) {
+            if (list1.size() == 0) {
+                break;
+            }
+            Collections.shuffle(list1);
+
+            String result1 = list1.remove(0);
+            list.add(result1);
+            System.out.println(result1);
         }
 
     }
